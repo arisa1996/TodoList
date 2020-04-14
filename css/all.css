@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet');
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+}
+
+blockquote {
+  quotes: none;
+}
+
+blockquote:before {
+  content: '';
+  content: none;
+}
+
+blockquote:after {
+  content: '';
+  content: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+q {
+  quotes: none;
+}
+
+q:before {
+  content: '';
+  content: none;
+}
+
+q:after {
+  content: '';
+  content: none;
+}
+
+ol {
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+article {
+  display: block;
+}
+
+aside {
+  display: block;
+}
+
+details {
+  display: block;
+}
+
+figure {
+  display: block;
+}
+
+figcaption {
+  display: block;
+}
+
+footer {
+  display: block;
+}
+
+header {
+  display: block;
+}
+
+hgroup {
+  display: block;
+}
+
+menu {
+  display: block;
+}
+
+nav {
+  display: block;
+}
+
+section {
+  display: block;
+}
+
+/* Desktop first */
+.btnGroup .btn {
+  outline: none;
+  border: none;
+}
+
+html {
+  height: 100%;
+  background-color: #E1E1E1;
+}
+
+.wrap {
+  max-width: 102.4rem;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}
+
+.header {
+  width: 100%;
+  background-color: #4A90E2;
+}
+
+.navBar {
+  width: 62rem;
+  margin: 0 auto;
+  font-size: 2.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.navBar a {
+  display: inline-block;
+  color: #00408B;
+  padding: 2.3rem;
+  border-bottom: .5rem solid transparent;
+}
+
+.navBar a:hover, .navBar a:focus, .navBar a .active {
+  color: #FFFFFF;
+  border-bottom: 0.5rem solid #00408B;
+}
+
+.todoListContent {
+  padding: 2.4rem 20rem;
+}
+
+.inputArea {
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+
+.inputArea .fa-plus {
+  color: #C8C8C8;
+  font-size: 2.4rem;
+  position: absolute;
+  top: 32%;
+  left: 4%;
+  cursor: pointer;
+}
+
+.inputArea .addData {
+  width: calc(100% - 133px);
+  outline: none;
+  border: 0.2rem solid #C8C8C8;
+  padding: 1.8rem 6.5rem;
+  font-size: 2.4rem;
+}
+
+.js_inputArea {
+  display: none;
+}
+
+.addList {
+  background-color: #F2F2F2;
+  -webkit-box-shadow: 0rem 0.4rem 0.4rem 0rem #C8C8C8;
+          box-shadow: 0rem 0.4rem 0.4rem 0rem #C8C8C8;
+  border-radius: .5rem;
+  margin-bottom: 2.4rem;
+  display: none;
+}
+
+.addList .eachTodoContent {
+  padding: 2.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 2px solid #C8C8C8;
+}
+
+.js_addList {
+  display: block;
+}
+
+.js_list .list {
+  padding-bottom: 2.4rem;
+  margin-bottom: 2.4rem;
+  background-color: #F2F2F2;
+  -webkit-box-shadow: 0rem 0.4rem 0.4rem 0rem #C8C8C8;
+          box-shadow: 0rem 0.4rem 0.4rem 0rem #C8C8C8;
+  border-radius: .5rem;
+}
+
+.js_list .stared {
+  background-color: #FFF2DC;
+}
+
+.js_list .itemed {
+  padding-bottom: 0rem;
+}
+
+.js_list .listContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: none;
+  padding: 2.4rem 2.4rem 1.5rem 2.4rem;
+}
+
+.js_list .onEditStyle {
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
+}
+
+.js_list .offEditStyle {
+  padding-bottom: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.checkArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 100%;
+}
+
+.checkArea .fa-square, .checkArea .fa-check-square {
+  font-size: 2.4rem;
+  cursor: pointer;
+  margin-right: .5rem;
+}
+
+.checkArea .fa-square {
+  color: #FFFFFF;
+}
+
+.checkArea .fa-check-square {
+  color: #4A90E2;
+}
+
+.checkArea .type {
+  max-width: 100%;
+  font-size: 2.4rem;
+  background-color: transparent;
+  border-width: 0;
+  margin-left: 1rem;
+  outline: none;
+}
+
+.checkArea .text-main {
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.checkArea .listName {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  background-color: transparent;
+  border-width: 0;
+}
+
+.checkArea .completed {
+  text-decoration: line-through;
+  color: #9B9B9B;
+}
+
+.newAdd, #newAdd, #inputFile, #inputFile2 {
+  display: none;
+}
+
+.iconArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+
+.iconArea .fa-pencil {
+  padding-left: 3.2rem;
+}
+
+.iconArea .onWork {
+  color: #4A90E2;
+}
+
+.dateTime {
+  margin-bottom: 2.2rem;
+  margin-left: 3.2rem;
+}
+
+.dateTime input {
+  max-width: 40%;
+  background-color: #FFFFFF;
+  border: none;
+  font-size: 1.6rem;
+  margin-right: .5rem;
+  padding: .8rem 1.6rem;
+}
+
+.addContent {
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 2.4rem 7.4rem;
+}
+
+.addContent .tittle {
+  margin-bottom: 1rem;
+}
+
+.addContent .fa {
+  margin-right: .8rem;
+}
+
+.addContent .fa-plus-square {
+  color: #C8C8C8;
+  font-size: 3.2rem;
+  margin-bottom: 2.7rem;
+  cursor: pointer;
+}
+
+.addContent .fa-plus-square:hover {
+  color: #4A90E2;
+}
+
+.addContent .note {
+  width: 40rem;
+  height: 12rem;
+  padding: .8rem 1.6rem;
+  font-size: 1.6rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  resize: none;
+  white-space: pre;
+}
+
+.addContent .fa-plus-square, .addContent .note {
+  margin-left: 3.2rem;
+}
+
+.btnGroup {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btnGroup .btn {
+  width: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 2.4rem;
+  padding: 1.6rem 5rem;
+  cursor: pointer;
+}
+
+.btnGroup .btn-cancel {
+  color: #D0021B;
+  background-color: #FFFFFF;
+}
+
+.btnGroup .btn-cancel:hover {
+  background-color: #FDFDFD;
+}
+
+.btnGroup .btn-add {
+  color: #FFFFFF;
+  background-color: #4A90E2;
+}
+
+.btnGroup .btn-add:hover {
+  background-color: #3982D7;
+}
+
+.eachTodoSubContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 6rem;
+}
+
+.eachTodoSubContent .eachStatus {
+  font-size: 1.6rem;
+  color: #757575;
+  padding: 10px 16px 0px 0px;
+}
+
+.listCount {
+  padding-left: 3rem;
+  font-style: italic;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #C8C8C8;
+}
+
+.fileArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.fileArea .fileName {
+  font-weight: 300;
+  font-size: 1.6rem;
+  margin: 1rem 2.8rem;
+}
+
+.fa-star {
+  color: #F5A623;
+}
+/*# sourceMappingURL=all.css.map */

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 10px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.css">
+    <script src="vue.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js"></script>
+    <!-- CDNJS :: Sortable (https://cdnjs.com/) -->
+    <script src="//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+    <!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+    <title>TodoList</title>
+</head>
+<body>    
+    <div class="wrap">
+        <div class="header">
+            <nav class="navBar">
+                <a href="#" class="js_task" 
+                :class="{'active':visibility == 'all'}" 
+                @click="visibility = 'all'"
+                >My Tasks</a>
+                <a href="#" class="js_progress" 
+                :class="{'active':visibility == 'progress'}" 
+                @click="visibility = 'progress'"
+                >In Progress</a>
+                <a href="#" class="js_completed" 
+                :class="{'active':visibility == 'completed'}" 
+                @click="visibility = 'completed'"
+                >Completed</a>
+            </nav>
+        </div>
+        <section class="todoListContent" id="js_todoList">
+            <div class="inputArea" :class="{'js_inputArea':editTodo}">
+                <label for="add" 
+                @click="editTodo = !editTodo"
+                ><i class="fa fa-plus" aria-hidden="true"></i></label>
+                <input type="text" id="add" placeholder="Add Task" class="addData" 
+                v-model.trim="input.newTitle" 
+                @keyup.enter="addTodo" 
+                @click="editTodo = !editTodo">
+            </div>
+            <div class="addList" :class="{'js_addList':editTodo}">
+                <div class="eachTodoContent">
+                    <div class="checkArea">
+                        <input type="checkbox" id="newAdd">
+                        <label for="newAdd"><i class="fa fa-square" aria-hidden="true"></i></label>
+                        <input type="autofocus" id="detailInput" class="type text-main" placeholder="Type Something Here…" 
+                        v-model.trim="input.newTitle">
+                    </div>
+                    <div class="iconArea">
+                        <i class="fa fa-pencil onWork" aria-hidden="true"></i>
+                    </div>
+                </div>   
+                <div class="addContent">
+                    <div class="tittle">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        Deadline
+                    </div>
+                    <div class="dateTime">
+                        <input type="date" name="date" autocomplete="off" class="date" v-model="input.newDate">
+                        <input type="time" name="time" class="time" v-model="input.newTime">
+                    </div>
+                    <div class="tittle">
+                        <i class="fa fa-file-o" aria-hidden="true"></i>
+                        File
+                    </div>
+                    <div class="fileArea">
+                        <template v-if="newFile">
+                            <p class="fileName">{{input.file.name}}</p>
+                        </template>
+                        <input type="file" name="file" id="inputFile" multiple="multiple" 
+                        @change="fileSelected">
+                        <label for="inputFile"><i class="fa fa-plus-square" aria-hidden="true"></i></label>
+                    </div>
+                    <div class="tittle">
+                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                        Comment
+                    </div>
+                    <textarea class= "note" placeholder="Type your memo here…" 
+                    v-model="input.newComment"></textarea>
+                </div>  
+                <div class="btnGroup">
+                    <button class="btn btn-cancel" @click="cancelTodo(),editTodo=!editTodo">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        Cancele
+                    </button>
+                    <button class="btn btn-add" @click="addTodo">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Add Task
+                    </button>
+                </div> 
+            </div>
+            <ul class="js_list">
+                <draggable v-model="todos">
+                   <li draggable="true" 
+                 v-for="(item,index) in items(visibility)" 
+                 :class="[item.isStar ? 'list stared':'list', item.itemEdit?'itemed':'']">
+                    <div class="eachTodoContent listContent" v-show="!item.itemEdit">
+                        <div class="checkArea">
+                            <input type="checkbox" class="newAdd" :id="item.id">
+                            <label :for="item.id">
+                                <i :class="[item.isCompleted ? 'fa fa-check-square':'fa squareI fa-square']" 
+                                aria-hidden="true" 
+                                @click="completeChange(item)"></i>
+                            </label>
+                            <div :class="[item.isCompleted ? 'listName completed':'listName']">{{item.newTitle}}</div>
+                        </div>
+                        <div class="iconArea">
+                            <i :class="[item.isStar ? 'fa starI fa-star':'fa starI fa-star-o']"
+                             aria-hidden="true"
+                             @click="starChange(item)"></i>
+                            <i class="fa fa-pencil" aria-hidden="true" 
+                            @click="item.itemEdit = true"></i>
+                        </div>
+                    </div>
+                    <div class="eachTodoSubContent" v-show="!item.itemEdit">
+                        <div class="eachStatus" v-if="item.newDate !==''">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <span class="deadlineText">{{item.newDate}}</span>
+                            <span class="deadlineText">{{item.newTime}}</span>
+                        </div>
+                        <div class="eachStatus" v-if="item.file !=''">
+                            <i class="fa fa-file-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="eachStatus" v-if="item.newComment !=''">
+                            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                        </div>                       
+                    </div>
+                    <div class="addList" :class="{'js_addList': true}" v-if="item.itemEdit">
+                        <div class="eachTodoContent">
+                            <div class="checkArea">
+                                <input type="checkbox" id="newAdd">
+                                <label for="newAdd"><i class="fa fa-square" aria-hidden="true"></i></label>
+                                <input type="autofocus" id="detailInput" class="type text-main" placeholder="Type Something Here…" 
+                                v-model.trim="item.newTitle">
+                            </div>
+                            <div class="iconArea">
+                                <i class="fa fa-pencil onWork" aria-hidden="true"></i>
+                            </div>
+                        </div>   
+                        <div class="addContent">
+                            <div class="tittle">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                Deadline
+                            </div>
+                            <div class="dateTime">
+                                <input type="date" name="date" autocomplete="off" class="date" 
+                                v-model="item.newDate">
+                                <input type="time" name="time" class="time" 
+                                v-model="item.newTime">
+                            </div>
+                            <div class="tittle">
+                                <i class="fa fa-file-o" aria-hidden="true"></i>
+                                File
+                            </div>
+                            <div class="fileArea">
+                                <template v-if="newFile">
+                                    <p class="fileName">{{item.file.name}}</p>
+                                </template>
+                                <input type="file" name="file" id="inputFile" multiple="multiple" 
+                                @change="fileSelected">
+                                <label for="inputFile"><i class="fa fa-plus-square" aria-hidden="true"></i></label>
+                            </div>
+                            <div class="tittle">
+                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                Comment
+                            </div>
+                            <textarea class= "note" placeholder="Type your memo here…" 
+                            v-model="item.newComment">
+                            </textarea>
+                        </div>  
+                        <div class="btnGroup">
+                            <button class="btn btn-cancel" @click="item.itemEdit = false">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                Cancele
+                            </button>
+                            <button class="btn btn-add" @click="editChange(item)">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Add Task
+                            </button>
+                        </div> 
+                    </div>
+                </li>  
+                </draggable>                             
+            </ul>
+            <div class="listCount" v-if="visibility != 'completed'">
+                <span class="countNum">{{todoLen}}</span> 
+                tasks left 
+            </div>
+            <div class="listCount" v-else>
+                <span class="countNum">{{todoLen}}</span> 
+                task completed 
+            </div>           
+        </section>
+    </div>
+
+    <script src="all.js"></script>
+</body>
+</html>

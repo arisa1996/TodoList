@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet');
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+$font-main:'Roboto', sans-serif;
+
+$color-white:#FFFFFF;
+$color-lWhite:#F2F2F2;
+$color-blue: #4A90E2;
+$color-darkBlue: #00408B;
+$color-red:#D0021B;
+$color-orange:#F5A623;
+$color-fair:#FFF2DC;
+$color-gray:#C8C8C8;
+$color-lGray:#E1E1E1;
+$color-darkGray:#757575;
+
+//桌機板1024px
+$base-font-size:1.6rem;
+$font-base:$base-font-size; //16px
+$font-medium:$base-font-size*1.13; //18px
+$font-large:$base-font-size*1.25; //20px
+$font-x-large:$base-font-size*1.5; //24px
+
+%btn{
+    width: 13rem;
+    height: 4.2rem;
+    outline: none;
+    border: none;
+    color: $color-white;
+    border-radius: .5rem;
+    font-family: $font-main;
+    font-size: $font-large;
+    cursor: pointer;
+}
+
+%style{
+    outline: none;
+    border: none;
+}
+
+
+

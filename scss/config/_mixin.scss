@@ -1,0 +1,181 @@
+/* Desktop first */
+@mixin desktop_1200 {
+  @media (max-width: 1200px) {
+    @content
+  }
+}
+
+@mixin desktop_min1200 {
+  @media (min-width: 1200px) {
+    @content
+  }
+}
+
+@mixin desktop_1023 {
+  @media (max-width: 1023px) {
+    @content
+  }
+}
+
+@mixin desktop_992 {
+  @media (max-width: 992px) {
+    @content
+  }
+}
+
+@mixin ipad_768 {
+  @media (max-width: 768px) {
+    @content
+  }
+}
+
+@mixin ipad_min768 {
+  @media (min-width: 768px) {
+    @content
+  }
+}
+
+
+@mixin mobile_576 {
+  @media (max-width: 576px) {
+    @content
+  }
+}
+
+@mixin mobile_min576 {
+  @media (min-width: 576px) {
+    @content
+  }
+}
+
+@mixin mobile_480 {
+  @media (max-width: 480px) {
+    @content
+  }
+}
+
+@mixin mobile_min480 {
+  @media (min-width: 480px) {
+    @content
+  }
+}
+
+@mixin mobile_414 {
+  @media (max-width: 414px) {
+    @content
+  }
+}
+
+@mixin mobile_min414 {
+  @media (min-width: 414px) {
+    @content
+  }
+}
+
+@mixin mobile_375 {
+  @media (max-width: 375px) {
+    @content
+  }
+}
+
+@mixin mobile_min375 {
+  @media (min-width: 375px) {
+    @content
+  }
+}
+
+@mixin mobile_320 {
+  @media (max-width: 320px) {
+    @content
+  }
+}
+
+@mixin iPhoneX{
+  @media only screen 
+    and (min-device-width: 375px) 
+    and (min-device-height: 812px) {
+      @content
+  }
+}
+
+@mixin dropdown_menu($top, $right) {
+  .dropdown_menu {
+    position: absolute;
+    top: $top;
+    right: $right;
+    z-index: 100;
+    width: 125px;
+    padding: 14px;
+    margin-top: 2px;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(27,31,35, .15);
+    border-radius: 4px;
+    box-shadow: 0 1px 15px rgba(27,31,35, .15);
+  }
+  .dropdown_menu:before {
+    border: 8px solid transparent;
+    border-bottom-color: rgba(27,31,35, .15);
+  }
+  .dropdown_menu:after {
+    border: 7px solid transparent;
+    border-bottom-color: #fff;
+  }
+  .dropdown_menu:after,
+  .dropdown_menu:before {
+    position: absolute;
+    display: inline-block;
+    content: "";
+  }
+  .dropdown_menu_sw:before {
+      top: -16px;
+      right: 9px;
+      left: auto;
+  }
+  .dropdown_menu_sw:after {
+      top: -13px;
+      right: 10px;
+      left: auto;
+  }
+}
+
+@mixin close_icon($top, $right) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  width: 30px;
+  height: 30px;
+  z-index: 99;
+  &:before, &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 28px;
+    width: 2px;
+    background-color: $gray-450;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@mixin mobile_bg($height, $pt, $px, $pm) {
+  position: relative;
+  height: $height;
+  background-color: $gray-950;
+  padding: $pt $px $pm;
+}
+
+//圖片取代文字
+@mixin text-hide{
+  white-space: nowrap;
+  text-indent: 110%;
+  overflow: hidden;
+}

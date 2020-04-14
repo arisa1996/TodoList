@@ -1,0 +1,258 @@
+html{
+    height: 100%; //滿版
+    background-color: $color-lGray;
+}
+.wrap{
+    max-width: 102.4rem;
+    margin: 0 auto;
+    font-family: $font-main;
+}
+.header{
+    width: 100%;
+    background-color: $color-blue;
+}
+.navBar{
+    width: 62rem;
+    margin: 0 auto;
+    font-size: $font-x-large;
+    display: flex;
+    justify-content: space-around;
+    a{
+        display: inline-block;
+        color: $color-darkBlue;
+        padding: 2.3rem;
+        border-bottom:.5rem solid transparent; //解決背景跳動問題
+        &:hover,&:focus,.active{
+            color: $color-white;
+            border-bottom: .5rem solid $color-darkBlue;
+        }
+    }
+}
+.todoListContent{
+    padding: 2.4rem 20rem;  
+}
+.inputArea{
+    position: relative;
+    margin-bottom: 2.4rem;
+    .fa-plus{
+        color: $color-gray;
+        font-size: $font-x-large;
+        position: absolute;
+        top: 32%;
+        left: 4%;
+        cursor: pointer;
+    }
+    .addData{
+        width: calc(100% - 133px);
+        outline: none;
+        border: .2rem solid $color-gray;
+        padding: 1.8rem 6.5rem;
+        font-size: $font-x-large;   
+    }
+}
+.js_inputArea{
+    display: none;
+}
+.addList{
+    background-color: $color-lWhite;
+    box-shadow: 0rem .4rem .4rem 0rem $color-gray;
+    border-radius: .5rem;
+    margin-bottom: 2.4rem;
+    display: none;
+    .eachTodoContent{
+        padding: 2.4rem;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid $color-gray;
+    }
+}
+.js_addList{
+    display: block;
+}
+.js_list{
+    .list{
+        padding-bottom: 2.4rem;
+        margin-bottom: 2.4rem;
+        background-color: $color-lWhite;
+        box-shadow: 0rem .4rem .4rem 0rem $color-gray;
+        border-radius: .5rem;
+    }
+    .stared{
+        background-color: $color-fair;
+    }
+    // 為了解決li的畫面樣式
+    .itemed{
+        padding-bottom: 0rem;
+    }
+    .listContent{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: none;
+        padding: 2.4rem 2.4rem 1.5rem 2.4rem;
+    }
+    .onEditStyle{
+        padding-bottom: 0rem;
+        margin-bottom: 0rem;
+    }
+    .offEditStyle{
+        padding-bottom: 2.4rem;
+        margin-bottom: 2.4rem;
+    }
+}
+.checkArea{
+    display: flex;
+    max-width: 100%;
+    .fa-square,.fa-check-square{
+        font-size: $font-x-large;
+        cursor: pointer;
+        margin-right: .5rem;
+    }
+    .fa-square{
+        color: $color-white;
+    }
+    .fa-check-square{
+        color: $color-blue;
+    }
+    .type{
+        max-width: 100%;
+        font-size: $font-x-large;
+        background-color: transparent;
+        border-width: 0;
+        margin-left: 1rem;
+        outline: none;
+    }
+    .text-main{
+        font-weight: 500;
+        overflow: hidden;
+        white-space: nowrap; //對空白字元強制不換行
+        text-overflow: ellipsis; //如果沒有足夠的空間顯示省略號,則將其剪切掉。
+    }
+    .listName{
+        font-size: $font-x-large;
+        font-weight: 700;
+        margin-left: 1rem;
+        background-color: transparent;
+        border-width: 0;
+    }
+    .completed{
+        text-decoration: line-through;
+        color: #9B9B9B;
+    }
+}
+//先隱藏之後做功能
+.newAdd,#newAdd,#inputFile,#inputFile2{
+    display: none;
+}
+.iconArea{
+    display: flex;
+    font-size: $font-x-large;
+    cursor: pointer;
+    .fa-pencil{
+        padding-left: 3.2rem;
+    }
+    //在編輯時變色
+    .onWork{
+        color: $color-blue;
+    }
+}
+.dateTime{
+    margin-bottom: 2.2rem;
+    margin-left: 3.2rem;
+    input{
+        max-width: 40%;
+        background-color: $color-white;
+        border: none;
+        font-size: $font-base;
+        margin-right: .5rem;
+        padding: .8rem 1.6rem;
+    }
+}
+.addContent{
+    font-size: $font-large;
+    font-weight: 700;
+    padding: 2.4rem 7.4rem;
+    .tittle{
+        margin-bottom: 1rem;
+    }
+    .fa{
+        margin-right: .8rem;
+    }
+    .fa-plus-square{
+        color: $color-gray;
+        font-size: 3.2rem;
+        margin-bottom: 2.7rem;
+        cursor: pointer;
+        &:hover{
+            color:$color-blue;
+        }
+    }
+    .note{
+        width: 40rem;
+        height: 12rem;
+        padding: .8rem 1.6rem;
+        font-size: $font-base;
+        box-sizing : border-box;
+        border: none;
+        resize: none;
+        white-space: pre; //文字可斷行
+    }
+    .fa-plus-square,.note{
+        margin-left: 3.2rem;
+    }   
+}
+.btnGroup{
+    width: 100%;
+    display: flex;
+    .btn{
+        width: 50%;
+        @extend %style;
+        box-sizing: border-box;
+        font-size: $font-x-large;
+        padding: 1.6rem 5rem;
+        cursor: pointer;
+    }
+    .btn-cancel{
+        color: $color-red;
+        background-color: $color-white;
+        // padding: 1.6rem 10rem;
+        &:hover{
+            background-color:#FDFDFD;
+        }
+    }
+    .btn-add{
+        color: $color-white;
+        background-color: $color-blue;
+        &:hover{
+            background-color:#3982D7;
+        }
+    }
+}
+.eachTodoSubContent{
+    display: flex;
+    padding-left: 6rem;
+    .eachStatus{
+        font-size: $font-base;
+        color: $color-darkGray;
+        padding: 10px 16px 0px 0px;
+    }
+}
+.listCount{
+    padding-left: 3rem;
+    font-style: italic;
+    font-size: $font-x-large;
+    font-weight: 400;
+    color: $color-gray;
+}
+.fileArea{
+    display: flex;
+    flex-direction: column;
+    .fileName{
+        font-weight: 300;
+        font-size:$font-base;
+        margin: 1rem 2.8rem;
+    }
+}
+//star style
+.fa-star{
+    color: $color-orange;
+}
